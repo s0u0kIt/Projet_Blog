@@ -22,7 +22,7 @@ class Router
         try {
             if (isset($_GET['route'])) {
                 if ($_GET['route'] === 'article') {
-                    if (isset($_GET['articleId']) && $_GET['articleId'] > 0) {
+                    if (isset($_GET['articleId']) && $_GET['articleId'] > 0) { //
                         $this->frontController->article($_GET['articleId']);
                     } else {
                         $this->errorController->errorNotFound();

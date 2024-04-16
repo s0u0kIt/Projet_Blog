@@ -26,8 +26,8 @@
     foreach ($comments as $comment):
         ?>
         <h4><?= htmlspecialchars($comment->getPseudo()); ?></h4>
-        <p><?= htmlspecialchars($comment->getContent()); ?></p>
-        <p>Posté le <?= htmlspecialchars($comment->getCreatedAt()); ?></p>
+        <p>Commentaire : <br><?= htmlspecialchars($comment->getContent()); ?></p>
+        <p>Posté le : <?= htmlspecialchars($comment->getCreatedAt()); ?></p>
     <?php endforeach; ?>
 </div>
 <!-- Code d'Ajout de Commentaire sous un article-->
@@ -41,7 +41,7 @@
         <br>
         <textarea id="Commentaire" type="text" name="content" required="true"></textarea>
         <br>
-        <input type="hidden" name="csrf_token" value="<?php echo $frontController->generateCsrfToken(); ?>">
+        <input type="hidden" name="csrf_token" value="<?php $csrf ?>">
         <br>
         <input type="submit" value="Ajouter"/>
     </form>

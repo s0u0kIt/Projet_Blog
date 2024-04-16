@@ -1,5 +1,6 @@
 <?php
 namespace App\src\controller;
+
 use App\src\DAO\ArticleDAO;
 use App\src\DAO\CommentDAO;
 use App\src\model\View;
@@ -25,11 +26,13 @@ class FrontController
 
     public function article($articleId)
     {
+        $csrf = $this->generateCsrfToken();
         $article = $this->articleDAO->getArticle($articleId);
         $comments = $this->commentDAO->getComments($articleId);
         return $this->view->render('single', [
             'article' => $article,
-            'comments' => $comments
+            'comments' => $comments,
+            'csrf' => $csrf
         ]);
     }
 
@@ -51,7 +54,7 @@ class FrontController
     }
 
     // Fonction pour générer un jeton CSRF
-    function generateCsrfToken() {
+    private function generateCsrfToken() {
         return bin2hex(random_bytes(32)); // Génère un jeton CSRF aléatoire
 
         // Générer un jeton CSRF et le stocker dans la session

@@ -31,7 +31,7 @@ class CommentDAO extends DAO
         return $comments;
     }
 
-    public function addComment($articleId,$pseudo,$content)
+    public function addComment($articleId, $pseudo, $content)
     {
         $sql = 'INSERT INTO comment (pseudo, content, createdAt, article_id) VALUES (?, ?, NOW(), ?)';
         $this->createQuery($sql, [$pseudo, $content, $articleId]);
